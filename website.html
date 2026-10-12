@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsApp Hub</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffffff, #ffffff, #ffffff);
+  color: lab(0% 0 0);
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  padding: 30px 15px;
+  background: #ffffff;
+  border-bottom: 2px solid #695d5d;
+}
+
+header h1 {
+  margin: 0 0 10px;
+  font-size: 30px;
+}
+
+header p {
+  margin: 0;
+  color: #000000;
+}
+
+.container {
+  width: 92%;
+  max-width: 650px;
+  margin: 25px auto;
+}
+
+.card {
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 25px rgb(0, 0, 0);
+}
+
+h2 {
+  color: #000000;
+  font-size: 20px;
+  margin-top: 0;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 13px;
+  margin: 7px 0 12px;
+  border-radius: 9px;
+  border: 1px solid #0d0d0d;
+  background: #090909;
+  color: white;
+  font-size: 16px;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #000000;
+}
+
+button, .link-button {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 9px;
+  background: #000000;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover, .link-button:hover {
+  background: #000000;
+  transform: translateY(-1px);
+}
+
+.secondary {
+  background: #ffffff;
+  color: hwb(0 100% 0%);
+}
+
+.note {
+  color: #000000;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #000000;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>WhatsApp Hub</h1>
+  <p>semua akses dalam satu Website
+  </p>
+</header>
+  
+<div class="container">
+
+  <div class="card">
+    <h2>saluran whatsapp</h2>
+    <a class="link-button"
+      href="https://whatsapp.com/channel/0029VbDk86TDuMRcrR4V852p"
+      target="_blank" rel="noopener noreferrer">
+      saluran WhatsApp
+    </a>
+  </div>
+
+  <div class="card">
+    <h2>Group chat</h2>
+    <a class="link-button"
+      href="https://whatsapp.com/channel/0029VbDk86TDuMRcrR4V852p"
+      target="_blank" rel="noopener noreferrer">
+      WhatsApp saya
+    </a>
+  </div>
+  
+  <div class="card">
+    <h2>no whatsapp </h2>
+    <a class="link-button"
+      href="https://wa.me/6282264221219"
+      target="_blank" rel="noopener noreferrer">
+      Buka WhatsApp Web
+    </a>
+  </div>
+
+  <div class="card">
+    <h2>link bokep</h2>
+    <a class="link-button"
+      href="https://whatsapp.com/channel/0029VbDk86TDuMRcrR4V852p"
+      target="_blank" rel="noopener noreferrer">
+      Kunjungi saluran WhatsApp
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  Website sederhana 
+</footer>
+
+<script>
+function cleanNumber(id) {
+  return document.getElementById(id)
+    .value.trim().replace(/[\s()+-]/g, "");
+}
+
+function validNumber(number) {
+  return /^\d{8,15}$/.test(number);
+}
+
+function openChannel() {
+  const link = document.getElementById("channel")
+    .value.trim();
+
+  try {
+    const url = new URL(link);
+    if (
+      url.protocol !== "https:" ||
+      !["whatsapp.com", "www.whatsapp.com"].includes(url.hostname) ||
+      !url.pathname.startsWith("/channel/")
+    ) {
+      throw new Error("Tautan tidak valid");
+    }
+    window.open(url.href, "_blank", "noopener,noreferrer");
+  } catch {
+    alert("Masukkan tautan saluran WhatsApp yang valid.");
+  }
+}
+
+function openMyWA() {
+  const number = cleanNumber("myNumber");
+
+  if (!validNumber(number)) {
+    alert("Masukkan nomor WhatsApp dengan kode negara.");
+    return;
+  }
+
+  window.open(
+    "https://wa.me/" + number,
+    "_blank",
+    "noopener,noreferrer"
+  );
+}
+
+function openChat() {
+  const number = cleanNumber("targetNumber");
+  const message = document.getElementById("message")
+    .value.trim();
+
+  if (!validNumber(number)) {
+    alert("Masukkan nomor tujuan yang valid.");
+    return;
+  }
+
+  const url = "https://wa.me/" + number +
+    (message ? "?text=" + encodeURIComponent(message) : "");
+
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
+function openGroup() {
+  const link = document.getElementById("groupLink")
+    .value.trim();
+
+  try {
+    const url = new URL(link);
+
+    if (
+      url.protocol !== "https:" ||
+      url.hostname !== "chat.whatsapp.com" ||
+      !url.pathname.startsWith("/")
+    ) {
+      throw new Error("Tautan tidak valid");
+    }
+
+    window.open(url.href, "_blank", "noopener,noreferrer");
+  } catch {
+    alert("Masukkan tautan undangan grup WhatsApp yang valid.");
+  }
+}
+</script>
+
+</body>
+</html>
